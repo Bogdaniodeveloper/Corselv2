@@ -1,0 +1,628 @@
+@font-face {
+    font-family: 'NotoSans';
+    src: url('./fons/NotoSansDisplay-SemiBold.ttf') format('ttf');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'NunitoSans';
+    src: url('./fons/NunitoSans_7pt-Regular.ttf') format('ttf');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    position: relative;
+    height: 100%;
+    font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+
+    object-fit: cover;
+}
+
+
+
+/**
+  Нормализация блочной модели
+ */
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+/**
+   Убираем внутренние отступы слева тегам списков,
+   у которых есть атрибут class
+  */
+:where(ul, ol):where([class]) {
+    padding-left: 0;
+}
+
+/**
+   Убираем внешние отступы body и двум другим тегам,
+   у которых есть атрибут class
+  */
+body,
+:where(blockquote, figure):where([class]) {
+    margin: 0;
+}
+
+/**
+   Убираем внешние отступы вертикали нужным тегам,
+   у которых есть атрибут class
+  */
+:where(h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    ul,
+    ol,
+    dl):where([class]) {
+    margin-block: 0;
+}
+
+:where(dd[class]) {
+    margin-left: 0;
+}
+
+:where(fieldset[class]) {
+    margin-left: 0;
+    padding: 0;
+    border: none;
+}
+
+/**
+   Убираем стандартный маркер маркированному списку,
+   у которого есть атрибут class
+  */
+:where(ul[class]) {
+    list-style: none;
+}
+
+:where(address[class]) {
+    font-style: normal;
+}
+
+/**
+   Обнуляем вертикальные внешние отступы параграфа,
+   объявляем локальную переменную для внешнего отступа вниз,
+   чтобы избежать взаимодействие с более сложным селектором
+  */
+p {
+    --paragraphMarginBottom: 24px;
+
+    margin-block: 0;
+}
+
+/**
+   Внешний отступ вниз для параграфа без атрибута class,
+   который расположен не последним среди своих соседних элементов
+  */
+p:where(:not([class]):not(:last-child)) {
+    margin-bottom: var(--paragraphMarginBottom);
+}
+
+
+/**
+   Упрощаем работу с изображениями и видео
+  */
+img,
+video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+/**
+   Наследуем свойства шрифт для полей ввода
+  */
+input,
+textarea,
+select,
+button {
+    font: inherit;
+}
+
+html {
+    /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+    height: 100%;
+    /**
+     Убираем скачок интерфейса по горизонтали
+     при появлении / исчезновении скроллбара
+    */
+    scrollbar-gutter: stable;
+}
+
+/**
+   Плавный скролл
+  */
+html,
+:has(:target) {
+    scroll-behavior: smooth;
+}
+
+body {
+    /**
+     Пригодится в большинстве ситуаций
+     (когда, например, нужно будет "прижать" футер к низу сайта)
+    */
+    min-height: 100%;
+    /**
+     Унифицированный интерлиньяж
+    */
+    line-height: 1.5;
+}
+
+/**
+   Нормализация высоты элемента ссылки при его инспектировании в DevTools
+  */
+a:where([class]) {
+    display: inline-flex;
+}
+
+/**
+   Курсор-рука при наведении на элемент
+  */
+button,
+label {
+    cursor: pointer;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+   (за исключением тех, у которых уже указан
+   атрибут fill со значением 'none' или начинается с 'url')
+  */
+:where([fill]:not([fill="none"],
+        [fill^="url"])) {
+    fill: currentColor;
+}
+
+/**
+   Приводим к единому цвету svg-элементы
+   (за исключением тех, у которых уже указан
+   атрибут stroke со значением 'none')
+  */
+:where([stroke]:not([stroke="none"],
+        [stroke^="url"])) {
+    stroke: currentColor;
+}
+
+/**
+   Чиним баг задержки смены цвета при взаимодействии с svg-элементами
+  */
+svg * {
+    transition-property: fill, stroke;
+}
+
+/**
+   Приведение рамок таблиц в классический 'collapse' вид
+  */
+:where(table) {
+    border-collapse: collapse;
+    border-color: currentColor;
+}
+
+/**
+   Удаляем все анимации и переходы для людей,
+   которые предпочитают их не использовать
+  */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    ::before,
+    ::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+:root {
+    box-sizing: border-box;
+
+    --font-family-base: 'NotoSans', sans-serif;
+    --font-family-accent: 'NunitoSans', sans-serif;
+
+    --container-width: 1640px;
+    --container-pading-x: 15px;
+
+    --transition-duration: 0.2s;
+}
+
+.header {
+    width: calc(100% - 140px);
+    position: absolute;
+    top: 0;
+    padding: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    display: flex;
+    margin-left: 70px;
+    margin-right: 70px;
+    padding-top: 37px;
+    padding-bottom: 37px;
+    border-bottom: 2px solid #000000;
+}
+
+.header-menu-list {
+    display: flex;
+    justify-content: flex-start;
+    gap: 48px;
+    padding-left: 50px;
+}
+
+.header-menu-link {
+    text-decoration: none;
+    color: #000000;
+}
+
+.header-icons {
+    display: flex;
+    padding-left: 1000px;
+    gap: 24px;
+}
+
+.slide {
+    height: 1080px;
+    position: absolute;
+    border-bottom: 2px solid #000000;
+}
+
+.content {
+    position: absolute;
+    top: 60%;
+    left: 5%;
+}
+
+.Textiles {
+    font-family: 'NatoSans';
+    font-size: 50px;
+    line-height: 61px;
+
+}
+
+.textfish {
+    margin: 4px;
+    display: flex;
+    text-align: left;
+    font-family: 'NunitoSans';
+    font-size: 18px;
+    line-height: 22px;
+
+}
+
+.COLLECTION {
+    margin-top: 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    padding: 10px 56px;
+    color: #000000;
+    font-family: 'NatoSans';
+    font-size: 12px;
+    border: 2px solid #000000;
+    padding: 10px 50px;
+
+}
+
+.hr {
+    width: 50px;
+    height: 3px;
+    border: none;
+    margin: 20px auto;
+}
+
+.footer-top {
+    display: flex;
+    padding-left: 140px;
+    padding-top: 80px;
+    padding-bottom: 70px;
+    border-bottom: 2px solid #000000;
+}
+
+.footer-content {
+    display: flex;
+
+}
+
+.footer-quote {
+    padding-right: 130px;
+}
+
+.footer-quote img {
+    padding-bottom: 35px;
+}
+
+.footer-list {
+    display: flex;
+}
+
+.footer-title {
+    padding-bottom: 5px;
+}
+
+.footer-item {
+
+    width: 250px;
+    height: 155px;
+}
+
+.foter-menu-link {
+    text-decoration: none;
+    color: #000000;
+    display: flex;
+    padding-top: 10px;
+}
+
+.footer-news {
+    padding-left: 100px;
+}
+
+.footer-news-get {
+    padding-bottom: 15px;
+    font-family: 'NotoSans';
+    font-size: 20px;
+    line-height: 27px;
+
+}
+
+.footer-botton {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 140px;
+}
+
+.footer-Rights {
+    display: flex;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 30px;
+}
+
+.footer-mail {
+    display: flex;
+    justify-content: space-between;
+    width: 380px;
+    border-bottom: 1px solid #000000;
+}
+
+.textfish-title p {
+    font-family: 'NotoSans';
+    font-size: 29px;
+    line-height: 39px;
+
+    margin-left: 475px;
+    margin-bottom: 190px;
+    margin-top: 160px;
+    height: 120px;
+    width: 980px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.product-grid {
+    margin-right: 140px;
+    margin-left: 140px;
+    margin-bottom: 150px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.content-list {
+    position: relative;
+    border: 1px solid black;
+}
+
+.content-item {
+    display: block;
+    max-width: 410px;
+    max-height: 555px;
+}
+
+.content-list:nth-child(2n-4) {
+    border-left: 0;
+}
+
+.selected-item {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    z-index: 5;
+    position: absolute;
+    right: 6%;
+    top: 3%;
+}
+
+.iner-item {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    z-index: 5;
+    position: absolute;
+    top: 7%;
+    right: 5.4%;
+}
+
+.product-footer {
+    border-top: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+}
+
+.name-price {
+    font-size: 13px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.basket-item {
+    border: 0;
+    border-left: 1px solid black;
+    display: flex;
+    padding: 26px 28px;
+}
+
+.shop-collection-list {
+    padding-bottom: 170px;
+    display: flex;
+    position: relative;
+}
+
+.collection-item {
+    position: relative;
+}
+
+.collection-item-body {
+    position: absolute;
+    top: 45%;
+    left: 42%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.collection-shop {
+    border: 2px solid #000000;
+    padding: 3% 70px;
+    text-decoration: none;
+    color: #000000;
+}
+
+.collection-item-body p {
+    font-family: 'NotoSans';
+    font-size: 50px;
+    line-height: 61px;
+    text-transform: uppercase;
+}
+
+.shop-title {
+    display: flex;
+    justify-content: space-between;
+    margin: 62px 365px;
+    gap: 70px;
+}
+
+.shop-mid-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.x-item {
+    display: flex;
+}
+
+.widget {
+    position: relative;
+    padding: 140px;
+}
+
+.widget-title {
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 36.5%;
+}
+
+.widget-title p {
+    font-family: 'NotoSans';
+    color: #ffff;
+    font-size: 60px;
+    line-height: 82px;
+    text-transform: uppercase;
+}
+
+.widget-item {
+    display: flex;
+}
+
+.widget-title a {
+    padding-top: 25px;
+    color: #ffff;
+    text-transform: uppercase;
+}
+
+.quote {
+    height: fit-content;
+}
+
+.content-quote {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.quote-item-top {
+    padding-bottom: 25px;
+}
+
+.quote-item-text {
+    font-family: 'NotoSans';
+    font-size: 29px;
+    line-height: 39px;
+    padding-bottom: 60px;
+}
+
+
+.swiper-button-next::after {
+    color: #000000;
+}
+
+.swiper-button-prev:after {
+    color: #000000;
+}
+
+.header-blog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.Blog-title {
+    display: flex;
+    justify-content: space-between;
+}
