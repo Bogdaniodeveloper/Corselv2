@@ -319,7 +319,7 @@ svg * {
 
 }
 
-.COLLECTION {
+.collection {
     margin-top: 20px;
     text-decoration: none;
     display: flex;
@@ -562,7 +562,7 @@ svg * {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 50%;
+    top: 42%;
     left: 36.5%;
 }
 
@@ -620,9 +620,141 @@ svg * {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    padding-bottom: 60px
 }
 
 .Blog-title {
+    font-family: 'NotoSans';
+    font-size: 35px;
+    line-height: 42px;
+    padding-bottom: 10px;
+}
+
+.Blog-quote {
+    font-family: 'NunitoSans';
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.Blog-title-list {
     display: flex;
     justify-content: space-between;
+    padding-left: 130px;
+    padding-right: 130px;
+}
+
+.Blog-list {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'NotoSans';
+    font-size: 24px;
+    line-height: 33px;
+}
+
+.more-item {
+    font-family: 'NotoSans';
+    text-transform: uppercase;
+    color: #000000;
+    font-size: 12px;
+    line-height: 17px;
+}
+
+.subscription {
+    position: relative;
+    padding-top: 100px;
+}
+
+.subscription-item {
+    font-family:'NotoSans';
+    font-size: 35px;
+    line-height: 42px;
+    position: absolute;
+    text-align: center;
+    left: 37%;
+    top: 35%;
+}
+
+.subscription-mail {
+    position: absolute;
+    left: 36.5%;
+    top: 65%;
+    width: 540px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #000000;
+}
+
+.artists {
+    display: flex;
+    gap: 40px;
+    padding: 140px 140px;
+}
+
+.artists-item {
+    padding-left: 125px;
+    display: flex;
+    padding-top: 185px;
+    flex-direction: column;
+    
+}
+ 
+.artists-title {
+    font-size: 35px;
+    font-family: 'NotoSans';
+    line-height: 42px;
+    padding-bottom: 30px;
+}
+
+.artists-quote {
+    font-family: 'NunitoSans';
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 50px;
+}
+
+.artists-collection {
+    border: 2px solid #000000;
+    padding: 3% 70px;
+    text-decoration: none;
+    color: #000000;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 17px;
+    font-family: 'NotoSans';
+    justify-content: center;
+}  
+
+.model {
+    height: fit-content;
+}
+
+.header-model {
+    padding-left: 140px;
+}
+
+.header-title-model {
+    font-family: 'NotoSans';
+    font-size: 29px;
+    line-height: 39px;
+    padding-bottom: 10px;
+}
+
+.model-follows {
+    font-family: 'NunitoSans';
+    font-size: 18px;
+    line-height: 22px;
+    padding-bottom: 35px;
+}
+
+.ordering-tools {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.ordering-tools-item {
+    display: flex;
 }
