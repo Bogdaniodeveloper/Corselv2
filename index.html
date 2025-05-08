@@ -363,7 +363,7 @@
                     </li>
                 </ul>
             </section>
-            <section class="model">
+            <section class="model-wrapper">
                 <div class="header-model">
                     <p class="header-title-model">Instagram</p>
                     <p class="model-follows">Follow us on @qodeinteractive</p>
@@ -398,26 +398,26 @@
                 <ul class="ordering-tools">
                     <li class="ordering-tools-list">
                         <div class="ordering-tools-item">
-                            <a href=""></a><img src="./icons/shop-item/svg.svg" alt=""></a>
-                            <a href="">FAST DELIVERY</a>
+                            <a class="ordering-icons" href=""><img src="./icons/shop-item/svg.svg" alt=""></a>
+                            <a class="ordering-title" href="">FAST DELIVERY</a>
                         </div>
                     </li>
                     <li class="ordering-tools-list">
-                        <div class="ordering-tools-item"></div>
-                        <a href=""><img src="./icons/shop-item/svg (1).svg" alt=""></a>
-                        <a href="">FREE RETURNS</a>
+                        <div class="ordering-tools-item">
+                            <a class="ordering-icons" href=""><img src="./icons/shop-item/svg (1).svg" alt=""></a>
+                            <a class="ordering-title" href="">FREE RETURNS</a>
                         </div>
                     </li>
                     <li class="ordering-tools-list">
-                        <div class="ordering-tools-item"></div>
-                        <a href=""><img src="./icons/shop-item/svg (2).svg" alt=""></a>
-                        <a href="">SECURE CHECKOUT</a>
+                        <div class="ordering-tools-item">
+                            <a class="ordering-icons" href=""><img src="./icons/shop-item/svg (2).svg" alt=""></a>
+                            <a class="ordering-title" href="">SECURE CHECKOUT</a>
                         </div>
                     </li>
                     <li class="ordering-tools-list">
-                        <div class="ordering-tools-item"></div>
-                        <a href=""><img src="./icons/shop-item/svg (3).svg" alt=""></a>
-                        <a href="">ORDER TRACKING</a>
+                        <div class="ordering-tools-item">
+                            <a class="ordering-icons" href=""><img src="./icons/shop-item/svg (3).svg" alt=""></a>
+                            <a class="ordering-title" href="">ORDER TRACKING</a>
                         </div>
                     </li>
                 </ul>
@@ -500,13 +500,15 @@
                     prevEl: ".swiper-button-prev",
                 },
             });
-        </script>\
+        </script>
         <script>
-            var swipermodel = new Swiper(".model", {
-                slidesPerView: 5,
-                centeredSlides: true,
-                spaceBetween: 30,
-                grabCursor: true,
+            document.addEventListener('DOMContentLoaded', function () {
+                var swipermodel = new Swiper(".model", {
+                    slidesPerView: "5",
+                    centeredSlides: false,
+                    spaceBetween: 30,
+                    grabCursor: true,
+                });
             });
         </script>
     </body>

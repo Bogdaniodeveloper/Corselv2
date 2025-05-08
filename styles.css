@@ -111,7 +111,7 @@ body,
    чтобы избежать взаимодействие с более сложным селектором
   */
 p {
-    --paragraphMarginBottom: 24px;
+    
 
     margin-block: 0;
 }
@@ -668,7 +668,7 @@ svg * {
 }
 
 .subscription-item {
-    font-family:'NotoSans';
+    font-family: 'NotoSans';
     font-size: 35px;
     line-height: 42px;
     position: absolute;
@@ -698,9 +698,9 @@ svg * {
     display: flex;
     padding-top: 185px;
     flex-direction: column;
-    
+
 }
- 
+
 .artists-title {
     font-size: 35px;
     font-family: 'NotoSans';
@@ -725,7 +725,7 @@ svg * {
     line-height: 17px;
     font-family: 'NotoSans';
     justify-content: center;
-}  
+}
 
 .model {
     height: fit-content;
@@ -750,11 +750,27 @@ svg * {
 }
 
 .ordering-tools {
+    margin-top: 60px;
+    border: 2px solid #000;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 
 }
 
+.ordering-tools-list {
+    border-right: 2px solid #000;
+    padding: 3% 150px;
+}
+
+
 .ordering-tools-item {
     display: flex;
+}
+
+.ordering-icons {
+    padding-right: 25px;
+}
+.ordering-title {
+    color: #000;
+    text-decoration: none;  
 }
