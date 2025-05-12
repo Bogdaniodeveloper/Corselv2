@@ -67,7 +67,7 @@
                         <p class="textfish">Lorem ipsum dolor sit amet, consectetur<br>adipiscing elit, sed do eiusmod.
                         </p>
                         <a class="collection" href="/">SHOP COLLECTION</a>
-                        <hr>
+
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -77,12 +77,14 @@
                         <p class="textfish">Lorem ipsum dolor sit amet, consectetur<br>adipiscing elit, sed do eiusmod.
                         </p>
                         <a class="collection" href="/">SHOP COLLECTION</a>
-                        <hr>
+
                     </div>
                 </div>
             </div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-scrollbal"></div>
         </div>
         <main>
             <section class="textfish-title">
@@ -491,6 +493,7 @@
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
+                
             });
         </script>
         <script>
@@ -499,12 +502,21 @@
                     nextEl: ".swiper-button-next",
                     prevEl: ".swiper-button-prev",
                 },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                    type: 'progressbar'
+                },
+                scrollbar: {
+                    el: '.swiper-scrollbar',
+                    draggable: true
+                }
             });
         </script>
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 var swipermodel = new Swiper(".model", {
-                    slidesPerView: "5",
+                    slidesPerView: "5.5",
                     centeredSlides: false,
                     spaceBetween: 30,
                     grabCursor: true,

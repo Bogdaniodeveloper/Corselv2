@@ -111,7 +111,7 @@ body,
    чтобы избежать взаимодействие с более сложным селектором
   */
 p {
-    
+
 
     margin-block: 0;
 }
@@ -770,7 +770,34 @@ svg * {
 .ordering-icons {
     padding-right: 25px;
 }
+
 .ordering-title {
     color: #000;
-    text-decoration: none;  
+    text-decoration: none;
+}
+
+.mySwiper .swiper-scrollbal-drag {
+    cursor: pointer;
+    background-color: #7a956b;
+}
+
+.swiper {
+    position: relative;
+}
+
+.swiper-pagination {
+    
+    position: absolute;
+    bottom: 0;
+    /* ставимо внизу */
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.swiper-pagination-progressbar-fill {
+    background: #7a956b;
+    /* колір заповнення */
 }
